@@ -35,7 +35,6 @@ def bashdec():
 
 def rotenc():
     s = ""
-    j = None
     s = input("Enter ur string here to encrypt:")
     li = len(s)
     print(color.FAIL + "Encrypted string is:" + color.END, end="")
