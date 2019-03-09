@@ -120,25 +120,19 @@ def cenc():
     s = k + s
     print("Now string is:", s)
     t = input("Enter the string to Encrypt here:")
-    li = len(t)
     print("Encrypted string is:", end="")
-    while li != 0:
-        for n in t:
-            j = ord(n)
-            if j == ord('a'):
-                j = i
-                print(chr(j), end="")
-                li = li - 1
-            elif 'a' < n <= k:
-                j = j - 1
-                print(chr(j), end="")
-                li = li - 1
-            elif n > k:
-                print(n, end="")
-                li = li - 1
-            elif ord(n) == 32:
-                print(' ', end="")
-                li = li - 1
+    for n in t:
+        j = ord(n)
+        if j == ord('a'):
+            j = i
+            print(chr(j), end="")
+        elif 'a' < n <= k:
+            j = j - 1
+            print(chr(j), end="")
+        elif n > k:
+            print(n, end="")
+        elif ord(n) == 32:
+            print(' ', end="")
 
 def cdec():
     h = ""
