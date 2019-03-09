@@ -114,17 +114,16 @@ def simdec():
 def cenc():
     s = "abcdefghijklmnopqrstuvwxyz"
     print("Current working string is:", s)
+    t = input("Enter the string to Encrypt here:")
     k = input("Input a single word key u want to use for encryption:")
-    i = ord(k)
     s = s.replace(k, '')
     s = k + s
     print("Now string is:", s)
-    t = input("Enter the string to Encrypt here:")
     print("Encrypted string is:", end="")
     for n in t:
         j = ord(n)
-        if j == ord('a'):
-            j = i
+        if n == 'a':
+            j = ord(k)
             print(chr(j), end="")
         elif 'a' < n <= k:
             j = j - 1
