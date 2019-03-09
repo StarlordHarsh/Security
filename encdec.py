@@ -35,22 +35,24 @@ def bashdec():
 
 def rotenc():
     s = ""
+    j = None
     s = input("Enter ur string here to encrypt:")
     li = len(s)
-    print(color.FAIL + "Encrypted string is:" + color.END, end="")
-    time.sleep(4)
+    print("Encrypted string is:", end="")
     while li != 0:
         for i in s:
             j = ord(i)
-            if 97 <= j <= 109:
+            if j >= 97 and j <= 109 or j >= 65 and j <= 77:
                 j = j + 13
                 # print(color.FAIL+"Encrypted string is:"+color.END,end="")
                 print(chr(j), end="")
                 li = li - 1
-            elif 110 <= j <= 122:
+
+            elif j >= 110 and j <= 122 or j >= 78 and j <= 90:
                 j = j - 13
                 print(chr(j), end="")
                 li = li - 1
+
             elif j == 32:
                 print(chr(j), end="")
                 li = li - 1
@@ -59,85 +61,119 @@ def rotdec():
     s = ""
     s = input("Enter the encrypted string to decrypt it:")
     li = len(s)
-    print(color.FAIL + "Decrypted string is:" + color.END, end="")
-    time.sleep(4)
+    print("Decrypted string is:", end="")
     while li != 0:
         for i in s:
             j = ord(i)
-            if 97 <= j <= 109:
+
+            if j >= 97 and j <= 109 or j >= 65 and j <= 77:
                 j = j + 13
                 print(chr(j), end="")
                 li = li - 1
-            elif 110 <= j <= 122:
+
+            elif j >= 110 and j <= 122 or j >= 78 and j <= 90:
                 j = j - 13
                 print(chr(j), end="")
                 li = li - 1
+
             elif j == 32:
                 print(chr(j), end="")
                 li = li - 1
 
 def rot22enc():
-    s = ""
-    j = None
     s = input("Enter ur string here to encrypt:")
     li = len(s)
-    print(color.FAIL + "Encrypted string is:" + color.END, end="")
+    print("Encrypted string is:", end="")
     print("\n")
-    time.sleep(4)
     while li != 0:
         for i in s:
             j = ord(i)
-            if 97 <= j <= 100:
+
+            if j >= 97 and j <= 100 or j >= 65 and j <= 68:
                 j = j + 22
                 # print(color.FAIL+"Encrypted string is:"+color.END,end="")
                 print(chr(j), end="")
                 li = li - 1
-            elif 101 <= j <= 104:
+
+            elif j >= 101 and j <= 104 or j >= 69 and j <= 72:
                 j = j - 4
                 print(chr(j), end="")
                 li = li - 1
-            elif 105 <= j <= 108:
+
+            elif j >= 105 and j <= 108 or j >= 73 and j <= 76:
                 j = j - 4
                 print(chr(j), end="")
                 li = li - 1
-            elif 109 <= j <= 112:
+
+            elif j >= 109 and j <= 112 or j >= 77 and j <= 80:
                 j = j - 4
                 print(chr(j), end="")
                 li = li - 1
-            elif 113 <= j <= 116:
+
+            elif j >= 113 and j <= 116 or j >= 81 and j <= 84:
                 j = j - 4
                 print(chr(j), end="")
                 li = li - 1
-            elif 117 <= j <= 120:
+
+            elif j >= 117 and j <= 120 or j >= 85 and j <= 88:
                 j = j - 4
                 print(chr(j), end="")
                 li = li - 1
-            elif 121 <= j <= 122:
+
+            elif j >= 121 and j <= 122 or j >= 89 and j <= 90:
                 j = j - 4
                 print(chr(j), end="")
                 li = li - 1
+
             elif j == 32:
-                print(chr(j), end="")
+                print(" ", end="")
                 li = li - 1
 
 def rot22dec():
     s = ""
     s = input("Enter the encrypted string to decrypt it:")
     li = len(s)
-    print(color.FAIL + "\nDecrypted string is:" + color.END, end="")
+    print("\nDecrypted string is:", end="")
     print("\n")
-    time.sleep(4)
     while li != 0:
         for i in s:
             j = ord(i)
-            if 119 <= j <= 122:
+
+            if j >= 119 and j <= 122 or j >= 87 and j <= 90:
                 j = j - 22
                 print(chr(j), end="")
                 li = li - 1
-            elif 97 <= j <= 118:
+
+            elif j >= 97 and j <= 100 or j >= 65 and j <= 68:
                 j = j + 4
                 print(chr(j), end="")
                 li = li - 1
+
+            elif j >= 101 and j <= 104 or j >= 69 and j <= 72:
+                j = j + 4
+                print(chr(j), end="")
+                li = li - 1
+
+            elif j >= 105 and j <= 108 or j >= 73 and j <= 76:
+                j = j + 4
+                print(chr(j), end="")
+                li = li - 1
+
+            elif j >= 109 and j <= 112 or j >= 77 and j <= 80:
+                j = j + 4
+                print(chr(j), end="")
+                li = li - 1
+
+            elif j >= 113 and j <= 116 or j >= 81 and j <= 84:
+                j = j + 4
+                print(chr(j), end="")
+                li = li - 1
+
+            elif j >= 117 and j <= 118 or j >= 85 and j <= 86:
+                j = j + 4
+                print(chr(j), end="")
+                li = li - 1
+
             elif j == 32:
                 print(chr(j), end="")
                 li = li - 1
