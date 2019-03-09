@@ -43,8 +43,11 @@ def rotenc():
     print("\n")
 
     for i in s:
-        j = ord(i) + 13
-        s1 += (chr(j if j <= 90 else (j - 26)) if i.isupper() else chr(j if j <= 122 else (j - 26)))
+        if ord(i) == 32:
+            s1 += " "
+        else:
+            j = ord(i) + 13
+            s1 += (chr(j if j <= 90 else (j - 26)) if i.isupper() else chr(j if j <= 122 else (j - 26)))
     print(s1)
 
 def rotdec():
@@ -55,8 +58,11 @@ def rotdec():
     print("\n")
 
     for i in s:
-        j = ord(i) - 13
-        s1 += (chr(j if j >= 65 else (j + 26)) if i.isupper() else chr(j if j >= 97 else (j + 26)))
+        if ord(i) == 32:
+            s1 += " "
+        else:
+            j = ord(i) - 13
+            s1 += (chr(j if j >= 65 else (j + 26)) if i.isupper() else chr(j if j >= 97 else (j + 26)))
     print(s1)
 
 def rot22enc():
@@ -67,8 +73,11 @@ def rot22enc():
     print("\n")
 
     for i in s:
-        j = ord(i)+22
-        s1 += (chr(j if j<=90 else (j-26)) if i.isupper() else chr(j if j<=122 else (j-26)))
+        if ord(i) == 32:
+            s1 += " "
+        else:
+            j = ord(i)+22
+            s1 += (chr(j if j<=90 else (j-26)) if i.isupper() else chr(j if j<=122 else (j-26)))
     print(s1)
 
 def rot22dec():
@@ -79,33 +88,28 @@ def rot22dec():
     print("\n")
 
     for i in s:
-        j = ord(i) - 22
-        s1 += (chr(j if j >= 65 else (j + 26)) if i.isupper() else chr(j if j >= 97 else (j + 26)))
+        if ord(i) == 32:
+            s1 += " "
+        else:
+            j = ord(i) - 22
+            s1 += (chr(j if j >= 65 else (j + 26)) if i.isupper() else chr(j if j >= 97 else (j + 26)))
     print(s1)
 
 def simenc():
-    s = ""
     s = input("Enter the string to encrypt here:")
-    li = len(s)
     print(color.HEADER + "Encrypted string is:" + color.END, end="")
-    print("\n")
+
     for i in s:
-        k = ord(i)
-        k = k + 1
+        k = ord(i)+1
         print(chr(k), end="")
-        li = li - 1
 
 def simdec():
-    s = ""
     s = input("Enter the encrypted string here to decrypt it:")
-    li = len(s)
     print(color.HEADER + "Decrypted string is" + color.END, end="")
-    print("\n")
+
     for i in s:
-        k = ord(i)
-        k = k - 1
+        k = ord(i)-1
         print(chr(k), end="")
-        li = li - 1
 
 def cenc():
     s = "abcdefghijklmnopqrstuvwxyz"
