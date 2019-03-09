@@ -22,6 +22,7 @@ from tqdm import tqdm
 def bashenc():
     s = input("Enter the message to Encrypt:")
     s1 = ""
+
     for k in s:
         s1 += (chr(90 - (ord(k) - 65))) if k.isupper() else chr(122 - (ord(k) - 97))
     print("Encrypted message is:", s1)
@@ -29,154 +30,58 @@ def bashenc():
 def bashdec():
     s = input("Enter the message to Decrypt:")
     s1 = ""
+
     for k in s:
         s1 += (chr(90 - (ord(k) - 65))) if k.isupper() else chr(122 - (ord(k) - 97))
     print("Decrypted message is:", s1)
 
 def rotenc():
-    s = ""
-    j = None
-    s = input("Enter ur string here to encrypt:")
+    s = input("Enter ur string here to Encrypt:")
     li = len(s)
+    s1 = ""
     print("Encrypted string is:", end="")
-    while li != 0:
-        for i in s:
-            j = ord(i)
-            if j >= 97 and j <= 109 or j >= 65 and j <= 77:
-                j = j + 13
-                # print(color.FAIL+"Encrypted string is:"+color.END,end="")
-                print(chr(j), end="")
-                li = li - 1
+    print("\n")
 
-            elif j >= 110 and j <= 122 or j >= 78 and j <= 90:
-                j = j - 13
-                print(chr(j), end="")
-                li = li - 1
-
-            elif j == 32:
-                print(chr(j), end="")
-                li = li - 1
+    for i in s:
+        j = ord(i) + 13
+        s1 += (chr(j if j <= 90 else (j - 26)) if i.isupper() else chr(j if j <= 122 else (j - 26)))
+    print(s1)
 
 def rotdec():
-    s = ""
-    s = input("Enter the encrypted string to decrypt it:")
+    s = input("Enter ur string here to Decrypt:")
     li = len(s)
-    print("Decrypted string is:", end="")
-    while li != 0:
-        for i in s:
-            j = ord(i)
-
-            if j >= 97 and j <= 109 or j >= 65 and j <= 77:
-                j = j + 13
-                print(chr(j), end="")
-                li = li - 1
-
-            elif j >= 110 and j <= 122 or j >= 78 and j <= 90:
-                j = j - 13
-                print(chr(j), end="")
-                li = li - 1
-
-            elif j == 32:
-                print(chr(j), end="")
-                li = li - 1
-
-def rot22enc():
-    s = input("Enter ur string here to encrypt:")
-    li = len(s)
+    s1 = ""
     print("Encrypted string is:", end="")
     print("\n")
-    while li != 0:
-        for i in s:
-            j = ord(i)
 
-            '''if j >= 97 and j <= 100 or j >= 65 and j <= 68:
-                j = j + 22
-                # print(color.FAIL+"Encrypted string is:"+color.END,end="")
-                print(chr(j), end="")
-                li = li - 1
+    for i in s:
+        j = ord(i) - 13
+        s1 += (chr(j if j >= 65 else (j + 26)) if i.isupper() else chr(j if j >= 97 else (j + 26)))
+    print(s1)
 
-            elif j >= 101 and j <= 104 or j >= 69 and j <= 72:
-                j = j - 4
-                print(chr(j), end="")
-                li = li - 1
+def rot22enc():
+    s = input("Enter ur string here to Encrypt:")
+    li = len(s)
+    s1=""
+    print("Encrypted string is:", end="")
+    print("\n")
 
-            elif j >= 105 and j <= 108 or j >= 73 and j <= 76:
-                j = j - 4
-                print(chr(j), end="")
-                li = li - 1
-
-            elif j >= 109 and j <= 112 or j >= 77 and j <= 80:
-                j = j - 4
-                print(chr(j), end="")
-                li = li - 1
-
-            elif j >= 113 and j <= 116 or j >= 81 and j <= 84:
-                j = j - 4
-                print(chr(j), end="")
-                li = li - 1
-
-            elif j >= 117 and j <= 120 or j >= 85 and j <= 88:
-                j = j - 4
-                print(chr(j), end="")
-                li = li - 1
-
-            elif j >= 121 and j <= 122 or j >= 89 and j <= 90:
-                j = j - 4
-                print(chr(j), end="")
-                li = li - 1
-
-            elif j == 32:
-                print(" ", end="")
-                li = li - 1'''
+    for i in s:
+        j = ord(i)+22
+        s1 += (chr(j if j<=90 else (j-26)) if i.isupper() else chr(j if j<=122 else (j-26)))
+    print(s1)
 
 def rot22dec():
-    s = ""
-    s = input("Enter the encrypted string to decrypt it:")
+    s = input("Enter ur string here to Decrypt:")
     li = len(s)
-    print("\nDecrypted string is:", end="")
+    s1 = ""
+    print("Encrypted string is:", end="")
     print("\n")
-    while li != 0:
-        for i in s:
-            j = ord(i)
 
-            if j >= 119 and j <= 122 or j >= 87 and j <= 90:
-                j = j - 22
-                print(chr(j), end="")
-                li = li - 1
-
-            elif j >= 97 and j <= 100 or j >= 65 and j <= 68:
-                j = j + 4
-                print(chr(j), end="")
-                li = li - 1
-
-            elif j >= 101 and j <= 104 or j >= 69 and j <= 72:
-                j = j + 4
-                print(chr(j), end="")
-                li = li - 1
-
-            elif j >= 105 and j <= 108 or j >= 73 and j <= 76:
-                j = j + 4
-                print(chr(j), end="")
-                li = li - 1
-
-            elif j >= 109 and j <= 112 or j >= 77 and j <= 80:
-                j = j + 4
-                print(chr(j), end="")
-                li = li - 1
-
-            elif j >= 113 and j <= 116 or j >= 81 and j <= 84:
-                j = j + 4
-                print(chr(j), end="")
-                li = li - 1
-
-            elif j >= 117 and j <= 118 or j >= 85 and j <= 86:
-                j = j + 4
-                print(chr(j), end="")
-                li = li - 1
-
-            elif j == 32:
-                print(chr(j), end="")
-                li = li - 1
+    for i in s:
+        j = ord(i) - 22
+        s1 += (chr(j if j >= 65 else (j + 26)) if i.isupper() else chr(j if j >= 97 else (j + 26)))
+    print(s1)
 
 def simenc():
     s = ""
