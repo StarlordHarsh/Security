@@ -89,7 +89,7 @@ def rot22enc():
         for i in s:
             j = ord(i)
 
-            if j >= 97 and j <= 100 or j >= 65 and j <= 68:
+            '''if j >= 97 and j <= 100 or j >= 65 and j <= 68:
                 j = j + 22
                 # print(color.FAIL+"Encrypted string is:"+color.END,end="")
                 print(chr(j), end="")
@@ -127,7 +127,7 @@ def rot22enc():
 
             elif j == 32:
                 print(" ", end="")
-                li = li - 1
+                li = li - 1'''
 
 def rot22dec():
     s = ""
