@@ -14,6 +14,7 @@ class color:
     END = '\033[0m'
 
 import re
+from os import system, name
 import progressbar
 import sys
 import time
@@ -173,6 +174,7 @@ print("This Script Can Encrypt Ur Message In a Different Manner So That No Third
 print("\n\n\n")
 
 def prnt():
+    clr()
     print("""            
               1. Encrypt the text
               2. Decrypt the text
@@ -180,7 +182,8 @@ def prnt():
                                           """)
 
 def clr():
-    
+    if name == 'nt':
+        _ = system('cls')
 
 while True:
     print("""
