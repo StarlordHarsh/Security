@@ -24,15 +24,20 @@ def bashenc():
     s1 = ""
 
     for k in s:
-        s1 += (chr(90 - (ord(k) - 65))) if k.isupper() else chr(122 - (ord(k) - 97))
+        if ord(k)==32:
+            s1+=" "
+        else:
+            s1 += (chr(90 - (ord(k) - 65))) if k.isupper() else chr(122 - (ord(k) - 97))
     print("Encrypted message is:", s1)
 
 def bashdec():
     s = input("Enter the message to Decrypt:")
     s1 = ""
-
     for k in s:
-        s1 += (chr(90 - (ord(k) - 65))) if k.isupper() else chr(122 - (ord(k) - 97))
+        if ord(k) == 32:
+            s1 += " "
+        else:
+            s1 += (chr(90 - (ord(k) - 65))) if k.isupper() else chr(122 - (ord(k) - 97))
     print("Decrypted message is:", s1)
 
 def rotenc():
@@ -100,22 +105,28 @@ def simenc():
     print(color.HEADER + "Encrypted string is:" + color.END, end="")
 
     for i in s:
-        k = ord(i)+1
-        print(chr(k), end="")
+        if ord(i)==32:
+            print(" ",end="")
+        else:
+            k = ord(i)+1
+            print(chr(k), end="")
 
 def simdec():
     s = input("Enter the encrypted string here to decrypt it:")
     print(color.HEADER + "Decrypted string is" + color.END, end="")
 
     for i in s:
-        k = ord(i)-1
-        print(chr(k), end="")
+        if ord(i)==32:
+            print(" ", end="")
+        else:
+            k = ord(i)-1
+            print(chr(k), end="")
 
 def cenc():
     s = "abcdefghijklmnopqrstuvwxyz"
     print("Current working string is:", s)
-    t = input("Enter the string to Encrypt here:")
-    k = input("Input a single word key u want to use for encryption:")
+    t = input("Enter the string to Encrypt:")
+    k = input("Input a single word key you want to use for Encryption:")
     s = s.replace(k, '')
     s = k + s
     print("Now string is:", s)
@@ -134,17 +145,9 @@ def cenc():
             print(' ', end="")
 
 def cdec():
-    h = ""
-    c = ''
-    s = "abcdefghijklmonpqrstuvwxyz"
-    t = input("Enter the Encrypted String to Decrypt it here:")
-    k = input("Enter the key you used earlier during encryption:")
-    s = s.replace(k, '')
-    s = k + s
-    i = ord(k)
-    li = len(t)
+    t = input("Enter the string to Decrypt:")
+    k = input("Enter the key you used earlier during Encryption:")
     for j in t:
-        p = ord(j)
         if j > k:
             print(j, end="")
         elif j < k:
@@ -166,14 +169,8 @@ def bar():
     for __ in progress(range(25)):
         time.sleep(0.1)
 
-print("This Script Can Encrypt Ur Message In a Different Manner So That No Third Person Can Read It!")
+print("This Script Can Encrypt Ur Message In a Different Manner So That No Third Person Can Read It !")
 print("\n\n\n")
-# choice=int(input(color.OKBLUE+"\nEnter 1 to start encryption and decryption process and 0 to exit the program:"+color.END))
-'''if choice==0:
-  delay_print(color.WARNING+"Thanks for using me!"+color.END)
-  delay_print(color.FAIL+"Leave a Reply on cyberbot1502@gmail.com"+color.END)
-  sys.exit(0)'''
-bar()
 
 def prnt():
     print("""            
@@ -182,8 +179,13 @@ def prnt():
               3. Exit from this method
                                           """)
 
+def clr():
+    
+
 while True:
     print("""
+              Menu-
+              
               1. Atbash Encryption
               2. Rot13
               3. Rot22
@@ -198,9 +200,8 @@ while True:
         sys.exit(0)
 
     if c == 1:
-
+        prnt()
         while True:
-            prnt()
             f = int(input("Enter your choice-"))
             if f == 1:
                 bashenc()
@@ -208,17 +209,7 @@ while True:
                 bashdec()
             elif f == 3:
                 break
-            # ch = int(input("\nWant to do some more encryption-decryption task on Atbash then enter 2:"))
-            '''if ch!=0:
-prnt()
-
-  elif c == 2:
-        def prnt():
-            print("""            
-              1. Encrypt the text
-              2. Decrypt the text
-              3. Exit from this method
-                                               """)'''
+    elif c == 2:
 
         while True:
             prnt()
@@ -232,8 +223,7 @@ prnt()
 
     elif c == 3:
 
-        cc = None
-        while cc != 0:
+        while True:
             prnt()
             f = int(input("Enter your choice-"))
             if f == 1:
