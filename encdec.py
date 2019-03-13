@@ -1,4 +1,3 @@
-
 class color:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -18,7 +17,6 @@ from os import system, name, path
 import progressbar
 import sys
 import time
-#from tqdm import tqdm
 
 def bashenc():
     s = input("Enter the message to Encrypt:")
@@ -34,6 +32,7 @@ def bashenc():
 def bashdec():
     s = input("Enter the message to Decrypt:")
     s1 = ""
+    
     for k in s:
         if ord(k) == 32:
             s1 += " "
@@ -196,7 +195,13 @@ def password():
             filea = open('ans.txt', 'w')
             filea.write(input("Answer:"))
             file = open('pass.txt', 'w')
-            file.write(pasw)
+            s1=""
+            for k in pasw:
+                if ord(k) == 32:
+                    s1 += " "
+                else:
+                    s1 += (chr(90 - (ord(k) - 65))) if k.isupper() else chr(122 - (ord(k) - 97))
+            file.write(s1)
             file.close()
             fileq.close()
             filea.close()
@@ -210,7 +215,13 @@ if (path.exists("pass.txt")==False):
 else:
     file = open("pass.txt", "r")
     pasw = input("""Enter your Password to Continue:""")
-    if(pasw==file.read()):
+    s1=""
+    for k in pasw:
+        if ord(k)==32:
+            s1+=" "
+        else:
+            s1 += (chr(90 - (ord(k) - 65))) if k.isupper() else chr(122 - (ord(k) - 97))
+    if(s1==file.read()):
         print("Password Matched")
     else:
         print("Wrong Password")
