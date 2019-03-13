@@ -184,12 +184,21 @@ def clr():
     if name == 'nt':
         _ = system('cls')
 if (path.exists("pass.txt")==False):
-    print("""
-                  Enter your password to conitnue:""")
-    pasw=input()
-    file = open('pass.txt', 'w')
-    file.write(pasw)
-    file.close()
+    while True:
+        pasw = input("""Enter your new Password:""")
+        pasw1 = input("""Enter your Password again:""")
+        if pasw==pasw1:
+            print("Enter your question for security purposes ")
+            fileq = open('ques.txt', 'w')
+            fileq.write(input("Question:"))
+            filea = open('ans.txt', 'w')
+            filea.write(input("Answer:"))
+            file = open('pass.txt', 'w')
+            file.write(pasw)
+            file.close()
+            break
+        else:
+            print("Password did not matched, Enter again")
 #if (path.exists("ans.txt")):
 else:
     file = open("pass.txt", "r")
