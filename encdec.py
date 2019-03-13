@@ -12,7 +12,8 @@ class color:
     END = '\033[0m'
 
 import re
-from os import system, name
+import os
+from os import system, name, path
 import progressbar
 import sys
 import time
@@ -182,8 +183,20 @@ def prnt():
 def clr():
     if name == 'nt':
         _ = system('cls')
+if (path.exists("ans.txt")==True):
+    print("""
+                  Enter your password to conitnue:""")
+    pasw=input()
+    file = open('pass.txt', 'w')
+    file.write(pasw)
+    file.close()
+#if (path.exists("ans.txt")):
+
 
 while True:
+    #os.stat("ans").st_size == 0:
+    #file = open('ans.txt', 'w')
+
     print("""
               Menu-
               
