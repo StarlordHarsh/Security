@@ -13,6 +13,7 @@ class color:
 
 import re
 import os
+import sys
 from os import system, name, path
 import progressbar
 import sys
@@ -183,7 +184,8 @@ def prnt():
 def clr():
     if name == 'nt':
         _ = system('cls')
-if (path.exists("pass.txt")==False):
+
+def password():
     while True:
         pasw = input("""Enter your new Password:""")
         pasw1 = input("""Enter your Password again:""")
@@ -196,9 +198,14 @@ if (path.exists("pass.txt")==False):
             file = open('pass.txt', 'w')
             file.write(pasw)
             file.close()
+            fileq.close()
+            filea.close()
             break
         else:
             print("Password did not matched, Enter again")
+
+if (path.exists("pass.txt")==False):
+    password()
 #if (path.exists("ans.txt")):
 else:
     file = open("pass.txt", "r")
@@ -207,6 +214,19 @@ else:
         print("Password Matched")
     else:
         print("Wrong Password")
+        print("Enter 1 to reset the password else 0 to Exit")
+        ch=int(input())
+        if ch==1:
+            fileq = open('ques.txt', 'r')
+            filea = open('ans.txt', 'r')
+            fileans = input(fileq.read())
+            if fileans == filea.read():
+                password()
+            else:
+                print("Wrong answer")
+                sys.exit()
+        else:
+            sys.exit()
 
 while True:
     #os.stat("ans").st_size == 0:
