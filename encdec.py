@@ -183,7 +183,7 @@ def prnt():
 def clr():
     if name == 'nt':
         _ = system('cls')
-if (path.exists("ans.txt")==True):
+if (path.exists("pass.txt")==False):
     print("""
                   Enter your password to conitnue:""")
     pasw=input()
@@ -191,7 +191,13 @@ if (path.exists("ans.txt")==True):
     file.write(pasw)
     file.close()
 #if (path.exists("ans.txt")):
-
+else:
+    file = open("pass.txt", "r")
+    pasw = input("""Enter your Password to Continue:""")
+    if(pasw==file.read()):
+        print("Password Matched")
+    else:
+        print("Wrong Password")
 
 while True:
     #os.stat("ans").st_size == 0:
