@@ -1,5 +1,3 @@
-k = ''
-
 
 class color:
     HEADER = '\033[95m'
@@ -18,7 +16,7 @@ from os import system, name
 import progressbar
 import sys
 import time
-from tqdm import tqdm
+#from tqdm import tqdm
 
 def bashenc():
     s = input("Enter the message to Encrypt:")
