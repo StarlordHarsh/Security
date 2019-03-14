@@ -16,6 +16,7 @@ import os
 import sys
 from os import system, name, path
 import progressbar
+from getpass import getpass
 import sys
 import time
 
@@ -149,7 +150,7 @@ def cenc():
             print(chr(j), end="")
         elif 'z' > n > k:
             print(n, end="")
-        elif not (65 < ord(n) < 90) or not (97 < ord(n) < 122):
+        elif not (65 <= ord(k) <= 90) or not (97 <= ord(k) <= 122):
             print(n, end="")
 
 
@@ -164,7 +165,7 @@ def cdec():
             print(j, end="")
         elif j == k:
             print('a', end="")
-        elif not (65 < ord(j) < 90) or not (97 < ord(j) < 122):
+        elif not (65 <= ord(k) <= 90) or not (97 <= ord(k) <= 122):
             print(j, end="")
 
 
@@ -201,15 +202,15 @@ def clr():
 def chkpass(pasw):
     s1=""
     for k in pasw:
-        if 65 < ord(k) < 90 or 97 < ord(k) < 122:
+        if 65 <= ord(k) <= 90 or 97 <= ord(k) <= 122:
             s1 += (chr(90 - (ord(k) - 65))) if k.isupper() else chr(122 - (ord(k) - 97))
         else:
             s1 += k
 
 def password():
     while True:
-        pasw = input("""Enter your new Password:""")
-        pasw1 = input("""Enter your Password again:""")
+        pasw = input("Enter your new Password:")
+        pasw1 = input("Enter your Password again:")
         if pasw == pasw1:
             print("Enter your question for security purposes ")
             fileq = open('ques.txt', 'w')
@@ -219,7 +220,7 @@ def password():
             file = open('pass.txt', 'w')
             s1 = ""
             for k in pasw:
-                if 65 < ord(k) < 90 or 97 < ord(k) < 122:
+                if 65 <= ord(k) <= 90 or 97 <= ord(k) <= 122:
                     s1 += (chr(90 - (ord(k) - 65))) if k.isupper() else chr(122 - (ord(k) - 97))
                 else:
                     s1 += k
@@ -236,10 +237,10 @@ if not path.exists("pass.txt"):
     password()  # if (path.exists("ans.txt")):
 else:
     file = open("pass.txt", "r")
-    pasw = input("""Enter your Password to Continue:""")
+    pasw = getpass("Enter your Password to Continue:")
     s1 = ""
     for k in pasw:
-        if 65 < ord(k) < 90 or 97 < ord(k) < 122:
+        if 65 <= ord(k) <= 90 or 97 <= ord(k) <= 122:
             s1 += (chr(90 - (ord(k) - 65))) if k.isupper() else chr(122 - (ord(k) - 97))
         else:
             s1 += k
@@ -252,7 +253,7 @@ else:
         if ch == 1:
             fileq = open('ques.txt', 'r')
             filea = open('ans.txt', 'r')
-            fileans = input(fileq.read())
+            fileans = getpass(fileq.read()+":")
             if fileans == filea.read():
                 password()
             else:
