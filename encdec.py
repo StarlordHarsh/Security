@@ -25,7 +25,7 @@ def bashenc():
     s1 = ""
 
     for k in s:
-        if 65 < ord(k) < 90 or 97 < ord(k) < 122:
+        if 65 <= ord(k) <= 90 or 97 <= ord(k) <= 122:
             s1 += (chr(90 - (ord(k) - 65))) if k.isupper() else chr(122 - (ord(k) - 97))
         else:
             s1 += k
@@ -37,7 +37,7 @@ def bashdec():
     s1 = ""
 
     for k in s:
-        if 65 < ord(k) < 90 or 97 < ord(k) < 122:
+        if 65 <= ord(k) <= 90 or 97 <= ord(k) <= 122:
             s1 += (chr(90 - (ord(k) - 65))) if k.isupper() else chr(122 - (ord(k) - 97))
         else:
             s1 += k
@@ -51,7 +51,7 @@ def rotenc():
     print("Encrypted string is:", end="")
     print("\n")
     for i in s:
-        if 65 < ord(i) < 90 or 97 < ord(i) < 122:
+        if 65 <= ord(k) <= 90 or 97 <= ord(k) <= 122:
             j = ord(i) + 13
             s1 += (chr(j if j <= 90 else (j - 26)) if i.isupper() else chr(j if j <= 122 else (j - 26)))
         else:
@@ -66,7 +66,7 @@ def rotdec():
     print("Encrypted string is:", end="")
     print("\n")
     for i in s:
-        if 65 < ord(i) < 90 or 97 < ord(i) < 122:
+        if 65 <= ord(k) <= 90 or 97 <= ord(k) <= 122:
             j = ord(i) - 13
             s1 += (chr(j if j >= 65 else (j + 26)) if i.isupper() else chr(j if j >= 97 else (j + 26)))
         else:
@@ -82,7 +82,7 @@ def rot22enc():
     print("\n")
 
     for i in s:
-        if 65 < ord(i) < 90 or 97 < ord(i) < 122:
+        if 65 <= ord(k) <= 90 or 97 <= ord(k) <= 122:
             j = ord(i) + 22
             s1 += (chr(j if j <= 90 else (j - 26)) if i.isupper() else chr(j if j <= 122 else (j - 26)))
         else:
@@ -98,7 +98,7 @@ def rot22dec():
     print("\n")
 
     for i in s:
-        if 65 < ord(i) < 90 or 97 < ord(i) < 122:
+        if 65 <= ord(k) <= 90 or 97 <= ord(k) <= 122:
             j = ord(i) - 22
             s1 += (chr(j if j >= 65 else (j + 26)) if i.isupper() else chr(j if j >= 97 else (j + 26)))
         else:
@@ -111,7 +111,7 @@ def simenc():
     print(color.HEADER + "Encrypted string is:" + color.END, end="")
 
     for i in s:
-        if 65 < ord(i) < 90 or 97 < ord(i) < 122:
+        if 65 <= ord(k) <= 90 or 97 <= ord(k) <= 122:
             k = ord(i) + 1
             print(chr(k), end="")
         else:
@@ -123,7 +123,7 @@ def simdec():
     print(color.HEADER + "Decrypted string is" + color.END, end="")
 
     for i in s:
-        if 65 < ord(i) < 90 or 97 < ord(i) < 122:
+        if 65 <= ord(k) <= 90 or 97 <= ord(k) <= 122:
             k = ord(i) - 1
             print(chr(k), end="")
         else:
@@ -198,6 +198,13 @@ def clr():
     if name == 'nt':
         _ = system('cls')
 
+def chkpass(pasw):
+    s1=""
+    for k in pasw:
+        if 65 < ord(k) < 90 or 97 < ord(k) < 122:
+            s1 += (chr(90 - (ord(k) - 65))) if k.isupper() else chr(122 - (ord(k) - 97))
+        else:
+            s1 += k
 
 def password():
     while True:
