@@ -32,7 +32,7 @@ def bashenc():
 def bashdec():
     s = input("Enter the message to Decrypt:")
     s1 = ""
-    
+
     for k in s:
         if ord(k) == 32:
             s1 += " "
@@ -46,13 +46,12 @@ def rotenc():
     s1 = ""
     print("Encrypted string is:", end="")
     print("\n")
-
     for i in s:
-        if ord(i) == 32:
-            s1 += " "
-        else:
+        if 65 < ord(i) < 90 or 97 < ord(i) < 122:
             j = ord(i) + 13
             s1 += (chr(j if j <= 90 else (j - 26)) if i.isupper() else chr(j if j <= 122 else (j - 26)))
+        else:
+            s1 += i
     print(s1)
 
 def rotdec():
@@ -61,13 +60,12 @@ def rotdec():
     s1 = ""
     print("Encrypted string is:", end="")
     print("\n")
-
     for i in s:
-        if ord(i) == 32:
-            s1 += " "
-        else:
+        if 65 < ord(i) < 90 or 97 < ord(i) < 122:
             j = ord(i) - 13
             s1 += (chr(j if j >= 65 else (j + 26)) if i.isupper() else chr(j if j >= 97 else (j + 26)))
+        else:
+            s1+=i
     print(s1)
 
 def rot22enc():
@@ -78,11 +76,11 @@ def rot22enc():
     print("\n")
 
     for i in s:
-        if ord(i) == 32:
-            s1 += " "
+        if 65 < ord(i) < 90 or 97 < ord(i) < 122:
+            j = ord(i) + 22
+            s1 += (chr(j if j <= 90 else (j - 26)) if i.isupper() else chr(j if j <= 122 else (j - 26)))
         else:
-            j = ord(i)+22
-            s1 += (chr(j if j<=90 else (j-26)) if i.isupper() else chr(j if j<=122 else (j-26)))
+            s1+=i
     print(s1)
 
 def rot22dec():
@@ -93,11 +91,11 @@ def rot22dec():
     print("\n")
 
     for i in s:
-        if ord(i) == 32:
-            s1 += " "
-        else:
+        if 65 < ord(i) < 90 or 97 < ord(i) < 122:
             j = ord(i) - 22
             s1 += (chr(j if j >= 65 else (j + 26)) if i.isupper() else chr(j if j >= 97 else (j + 26)))
+        else:
+            s1+=i
     print(s1)
 
 def simenc():
@@ -105,22 +103,22 @@ def simenc():
     print(color.HEADER + "Encrypted string is:" + color.END, end="")
 
     for i in s:
-        if ord(i)==32:
-            print(" ",end="")
-        else:
-            k = ord(i)+1
+        if 65 < ord(i) < 90 or 97 < ord(i) < 122:
+            k = ord(i) + 1
             print(chr(k), end="")
+        else:
+            print(i, end="")
 
 def simdec():
     s = input("Enter the encrypted string here to decrypt it:")
     print(color.HEADER + "Decrypted string is" + color.END, end="")
 
     for i in s:
-        if ord(i)==32:
-            print(" ", end="")
-        else:
-            k = ord(i)-1
+        if 65 < ord(i) < 90 or 97 < ord(i) < 122:
+            k = ord(i) - 1
             print(chr(k), end="")
+        else:
+            print(i, end="")
 
 def cenc():
     s = "abcdefghijklmnopqrstuvwxyz"
@@ -139,24 +137,24 @@ def cenc():
         elif 'a' < n <= k:
             j = j - 1
             print(chr(j), end="")
-        elif n > k:
+        elif 'z'>n > k:
             print(n, end="")
-        elif ord(n) == 32:
-            print(' ', end="")
+        elif not (65 < ord(n) < 90) or not (97 < ord(n) < 122):
+            print(n, end="")
 
 def cdec():
     t = input("Enter the string to Decrypt:")
     k = input("Enter the key you used earlier during Encryption:")
     for j in t:
-        if j > k:
+        if 'z'>j > k:
             print(j, end="")
-        elif j < k:
+        elif 'a'<j < k:
             j = chr(ord(j) + 1)
             print(j, end="")
         elif j == k:
             print('a', end="")
-        elif j == ' ':
-            print(' ', end="")
+        elif not (65 < ord(j) < 90) or not (97 < ord(j) < 122):
+            print(j, end="")
 
 def delay_print(s):
     for c in s:
