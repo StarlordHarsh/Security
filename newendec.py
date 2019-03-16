@@ -36,7 +36,7 @@ def Pet():
     li = len(petn)
     p = None
     while li != 0:
-        j = open(r"D:\ans.txt", "w")
+        j = open(r"ans.txt", "w")
         j.write('1')
         j.close()
         while p != 0:
@@ -46,20 +46,20 @@ def Pet():
                 if (i.strip()):
                     if j >= 97 and j <= 109 or j >= 65 and j <= 77:
                         j = j + 13
-                        p = open(r"D:\ans.txt", "a")
+                        p = open(r"ans.txt", "a")
                         p.write(chr(j))
                         li = li - 1
                         p=0
 
                     elif j >= 110 and j <= 122 or j >= 78 and j <= 90:
                         j = j - 13
-                        p = open(r"D:\ans.txt", "a")
+                        p = open(r"ans.txt", "a")
                         p.write(chr(j))
                         li = li - 1
                         p=0
 
                     elif j == 32:
-                        p = open(r"D:\ans.txt", "a")
+                        p = open(r"ans.txt", "a")
                         p.write(chr(j))
                         li = li - 1
                         p=0
@@ -69,10 +69,10 @@ def Pet():
                     p = 1
                     sys.exit(0)
 
-    c = open(r"D:\ans.txt")
+    c = open(r"ans.txt")
     x = c.readlines()
     c.close()
-    g = open(r"D:\ans.txt", "r+")
+    g = open(r"ans.txt", "r+")
     for line in x:
         g.write(line[1:])
         g.truncate()
@@ -92,13 +92,13 @@ if x == 1:
     count = 0
     #pas = input("Enter ur password to continue..")
     pas = getpass.getpass(prompt='Enter Your Password here>')
-    d = open(r"D:\passw.txt", "r")
+    d = open(r"passw.txt", "r")
     f=d.read()
     d.close()
     li = len(f)
     while li != 0:
         str = ""
-        f = open(r"D:\passw.txt", "r")
+        f = open(r"passw.txt", "r")
         t = f.read()
         for i in t:
             j = ord(i)
@@ -131,25 +131,25 @@ if x == 1:
         li=0
         sys.exit(0)
 
-s = open(r"D:\passw.txt", "r")
+s = open(r"passw.txt", "r")
 u = s.read()
 l = len(u)
 
 if x == 0:
     if l == 1:
-        n = open(r"D:\passw.txt", "w")
+        n = open(r"passw.txt", "w")
         n.write(ran)
         n.close()
-        f=open(r"D:\passw.txt","r")
+        f=open(r"passw.txt","r")
         g=f.read()
         print("Default Password is:",g, " change this to your password,for security reasons you know very well!")
         pasn = getpass.getpass(prompt='Enter Your new Password here>>>')
         print("Please note down this password becuase u need this for login purpose")
         li = len(pasn)
-        p = open(r"D:\passw.txt")
+        p = open(r"passw.txt")
         x = p.readlines()
         p.close()
-        g = open(r"D:\passw.txt", "r+")
+        g = open(r"passw.txt", "r+")
         i=list(pasn)
         u=i.index(i[0])
         for line in x:
@@ -160,34 +160,34 @@ if x == 0:
                 j = ord(i)
                 if j >= 97 and j <= 100 or j >= 65 and j <= 68:
                     j = j + 22
-                    f = open(r"D:\passw.txt", "a")
+                    f = open(r"passw.txt", "a")
                     f.write(chr(j))
                     f.close()
                     li = li - 1
 
                 elif j >= 101 and j <= 122 or j >= 69 and j <= 90:
                     j = j - 4
-                    n = open(r"D:\passw.txt", "a")
+                    n = open(r"passw.txt", "a")
                     n.write(chr(j))
                     n.close()
                     li = li - 1
 
                 elif j == 32:
-                    d = open(r"D:\passw.txt", "a")
+                    d = open(r"passw.txt", "a")
                     d.write(chr(j))
                     d.close()
                     li = li - 1
 
                 elif j >= 48 and j <= 57:
-                    s = open(r"D:\passw.txt", "a")
+                    s = open(r"passw.txt", "a")
                     s.write(chr(j))
                     s.close()
                     li = li - 1
 
-        '''p = open(r"D:\passw.txt")
+        '''p = open(r"passw.txt")
         x = p.readlines()
         p.close()
-        g = open(r"D:\passw.txt", "r+")
+        g = open(r"passw.txt", "r+")
         for line in x:
             g.write(line[1:])
             g.truncate()'''
@@ -203,7 +203,7 @@ if x == 0:
         q = int(input("Forget Password??, No problem enter 1 here to set a new password:"))
         if q == 1:
             a =getpass.getpass(prompt='Enter Your Pet name to verify it is u>>>>')
-            b = open(r"D:\ans.txt", "r")
+            b = open(r"ans.txt", "r")
             v = b.read()
             os.system("cls")
             li=len(v)
@@ -230,10 +230,10 @@ if x == 0:
 
             if str == a:
                 print("You are Verified....")
-                j = open(r"D:\passw.txt", "w")
+                j = open(r"passw.txt", "w")
                 j.write('1')
                 j.close()
-                p = open(r"D:\passw.txt", "a")
+                p = open(r"passw.txt", "a")
                 pasnn=getpass.getpass(prompt='Enter Your new password>>>>')
                 li = len(pasnn)
                 while li != 0:
@@ -241,34 +241,34 @@ if x == 0:
                         j = ord(i)
                         if j >= 97 and j <= 100 or j >= 65 and j <= 68:
                             j = j + 22
-                            f = open(r"D:\passw.txt", "a")
+                            f = open(r"passw.txt", "a")
                             f.write(chr(j))
                             f.close()
                             li = li - 1
 
                         elif j >= 101 and j <= 122 or j >= 69 and j <= 90:
                             j = j - 4
-                            n = open(r"D:\passw.txt", "a")
+                            n = open(r"passw.txt", "a")
                             n.write(chr(j))
                             n.close()
                             li = li - 1
 
                         elif j == 32:
-                            d = open(r"D:\passw.txt", "a")
+                            d = open(r"passw.txt", "a")
                             d.write(chr(j))
                             d.close()
                             li = li - 1
 
                         elif j >= 48 and j <= 57:
-                            s = open(r"D:\passw.txt", "a")
+                            s = open(r"passw.txt", "a")
                             s.write(chr(j))
                             s.close()
                             li = li - 1
 
-                p = open(r"D:\passw.txt")
+                p = open(r"passw.txt")
                 x = p.readlines()
                 p.close()
-                g = open(r"D:\passw.txt", "r+")
+                g = open(r"passw.txt", "r+")
                 for line in x:
                     g.write(line[1:])
                     g.truncate()
