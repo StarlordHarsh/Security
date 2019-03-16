@@ -182,8 +182,8 @@ def bar():
         time.sleep(0.1)
 
 
-print("This Script Can Encrypt Ur Message In a Different Manner So That No Third Person Can Read It !")
-print("\n\n\n")
+#print("This Script Can Encrypt Ur Message In a Different Manner So That No Third Person Can Read It !")
+#print("\n\n\n")
 
 
 def prnt():
@@ -209,6 +209,7 @@ def chkpass(pasw):
 
 def password():
     while True:
+        print("Pass block")
         pasw = input("Enter your new Password:")
         pasw1 = input("Enter your Password again:")
         if pasw == pasw1:
@@ -305,53 +306,6 @@ while True:  # os.stat("ans").st_size == 0:#file = open('ans.txt', 'w')
 
         while True:
             prnt()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             f = int(input("Enter your choice-"))
             if f == 1:
                 rot22enc()
