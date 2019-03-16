@@ -232,12 +232,11 @@ def password():
         else:
             print("Password did not matched, Enter again")
 
-
 if not path.exists("pass.txt"):
     password()  # if (path.exists("ans.txt")):
 else:
     file = open("pass.txt", "r")
-    pasw = getpass("Enter your Password to Continue:")
+    pasw = input("Enter your Password to Continue:")
     s1 = ""
     for k in pasw:
         if 65 <= ord(k) <= 90 or 97 <= ord(k) <= 122:
@@ -253,7 +252,7 @@ else:
         if ch == 1:
             fileq = open('ques.txt', 'r')
             filea = open('ans.txt', 'r')
-            fileans = getpass(fileq.read()+":")
+            fileans = input(fileq.read()+":")
             if fileans == filea.read():
                 password()
             else:
@@ -306,6 +305,53 @@ while True:  # os.stat("ans").st_size == 0:#file = open('ans.txt', 'w')
 
         while True:
             prnt()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             f = int(input("Enter your choice-"))
             if f == 1:
                 rot22enc()
