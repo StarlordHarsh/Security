@@ -51,12 +51,12 @@ def rotenc():
     s1 = ""
     print("Encrypted string is:", end="")
     print("\n")
-    for i in s:
+    for k in s:
         if 65 <= ord(k) <= 90 or 97 <= ord(k) <= 122:
-            j = ord(i) + 13
-            s1 += (chr(j if j <= 90 else (j - 26)) if i.isupper() else chr(j if j <= 122 else (j - 26)))
+            j = ord(k) + 13
+            s1 += (chr(j if j <= 90 else (j - 26)) if k.isupper() else chr(j if j <= 122 else (j - 26)))
         else:
-            s1 += i
+            s1 += k
     print(s1)
 
 
@@ -66,44 +66,42 @@ def rotdec():
     s1 = ""
     print("Encrypted string is:", end="")
     print("\n")
-    for i in s:
+    for k in s:
         if 65 <= ord(k) <= 90 or 97 <= ord(k) <= 122:
-            j = ord(i) - 13
-            s1 += (chr(j if j >= 65 else (j + 26)) if i.isupper() else chr(j if j >= 97 else (j + 26)))
+            j = ord(k) - 13
+            s1 += (chr(j if j >= 65 else (j + 26)) if k.isupper() else chr(j if j >= 97 else (j + 26)))
         else:
-            s1 += i
+            s1 += k
     print(s1)
 
 
 def rot22enc():
     s = input("Enter ur string here to Encrypt:")
-    li = len(s)
     s1 = ""
     print("Encrypted string is:", end="")
     print("\n")
 
-    for i in s:
+    for k in s:
         if 65 <= ord(k) <= 90 or 97 <= ord(k) <= 122:
-            j = ord(i) + 22
-            s1 += (chr(j if j <= 90 else (j - 26)) if i.isupper() else chr(j if j <= 122 else (j - 26)))
+            j = ord(k) + 22
+            s1 += (chr(j if j <= 90 else (j - 26)) if k.isupper() else chr(j if j <= 122 else (j - 26)))
         else:
-            s1 += i
+            s1 += k
     print(s1)
 
 
 def rot22dec():
     s = input("Enter ur string here to Decrypt:")
-    li = len(s)
     s1 = ""
     print("Encrypted string is:", end="")
     print("\n")
 
-    for i in s:
+    for k in s:
         if 65 <= ord(k) <= 90 or 97 <= ord(k) <= 122:
-            j = ord(i) - 22
-            s1 += (chr(j if j >= 65 else (j + 26)) if i.isupper() else chr(j if j >= 97 else (j + 26)))
+            j = ord(k) - 22
+            s1 += (chr(j if j >= 65 else (j + 26)) if k.isupper() else chr(j if j >= 97 else (j + 26)))
         else:
-            s1 += i
+            s1 += k
     print(s1)
 
 
@@ -111,24 +109,24 @@ def simenc():
     s = input("Enter the string to encrypt here:")
     print(color.HEADER + "Encrypted string is:" + color.END, end="")
 
-    for i in s:
+    for k in s:
         if 65 <= ord(k) <= 90 or 97 <= ord(k) <= 122:
-            k = ord(i) + 1
+            k = ord(k) + 1
             print(chr(k), end="")
         else:
-            print(i, end="")
+            print(k, end="")
 
 
 def simdec():
     s = input("Enter the encrypted string here to decrypt it:")
     print(color.HEADER + "Decrypted string is" + color.END, end="")
 
-    for i in s:
+    for k in s:
         if 65 <= ord(k) <= 90 or 97 <= ord(k) <= 122:
-            k = ord(i) - 1
-            print(chr(k), end="")
+            i = ord(k) - 1
+            print(chr(i), end="")
         else:
-            print(i, end="")
+            print(k, end="")
 
 
 def cenc():
@@ -263,14 +261,15 @@ else:
             sys.exit()
 
 while True:  # os.stat("ans").st_size == 0:#file = open('ans.txt', 'w')
+    clr()
     print("""
               Menu-
               
               1. Atbash Encryption
               2. Rot13
               3. Rot22
-              4. Simple Encryption(add 1)
-              5. caesar(with ur key) where ! denotes a single space 
+              4. Simple Encryption
+              5. Caesar Keyed 
               6. Change your Password
               0. Exit The program 
                                               """)
@@ -289,6 +288,7 @@ while True:  # os.stat("ans").st_size == 0:#file = open('ans.txt', 'w')
             elif f == 2:
                 bashdec()
             elif f == 3:
+                clr()
                 break
     elif c == 2:
 
@@ -300,6 +300,7 @@ while True:  # os.stat("ans").st_size == 0:#file = open('ans.txt', 'w')
             elif f == 2:
                 rotdec()
             elif f == 3:
+                clr()
                 break
 
     elif c == 3:
@@ -312,6 +313,7 @@ while True:  # os.stat("ans").st_size == 0:#file = open('ans.txt', 'w')
             elif f == 2:
                 rot22dec()
             elif f == 3:
+                clr()
                 break
 
     elif c == 4:
@@ -324,6 +326,7 @@ while True:  # os.stat("ans").st_size == 0:#file = open('ans.txt', 'w')
             elif f == 2:
                 simdec()
             elif f == 3:
+                clr()
                 break
 
     elif c == 5:
@@ -336,6 +339,7 @@ while True:  # os.stat("ans").st_size == 0:#file = open('ans.txt', 'w')
             elif f == 2:
                 cdec()
             elif f == 3:
+                clr()
                 break
 
     elif c==6:
