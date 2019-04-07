@@ -225,7 +225,16 @@ def password():
             filea.write(input("Answer:"))
             file = open('pass.txt', 'w')
             s1 = ""
-
+            while len(s1) < 9:
+                ran = random.randrange(4)
+                if ran == 0:
+                    s1 += chr(random.randrange(33, 34))
+                elif ran == 1:
+                    s1 += chr(random.randrange(48, 58))
+                elif ran == 2:
+                    s1 += chr(random.randrange(65, 91))
+                elif ran == 3:
+                    s1 += chr(random.randrange(97, 123))
             for k in pasw:
                 if 65 <= ord(k) <= 90 or 97 <= ord(k) <= 122:
                     s1 += (chr(90 - (ord(k) - 65))) if k.isupper() else chr(122 - (ord(k) - 97))
@@ -253,7 +262,7 @@ else:
                 s1 += (chr(90 - (ord(k) - 65))) if k.isupper() else chr(122 - (ord(k) - 97))
             else:
                 s1 += k
-        if s1 == file.read():
+        if s1 == file.read()[9:]:
             print("Password Matched")
         else:
             print("Wrong Password")
@@ -264,23 +273,7 @@ else:
         fileans = input(fileq.read() + ":")
         if fileans == filea.read():
             password()
-    # if s1 == file.read():
-    #    print("Password Matched")
-    # else:
-    #    print("Wrong Password")
-    #    print("Enter 1 to reset the password else 0 to Exit")
-    #    ch = int(input())
-    #    if ch == 1:
-    #        fileq = open('ques.txt', 'r')
-    #        filea = open('ans.txt', 'r')
-    #        fileans = input(fileq.read() + ":")
-    #        if fileans == filea.read():
-    #            password()
-    #        else:
-    #            print("Wrong answer")
-    #            sys.exit()
-    #    else:
-    #        sys.exit()
+    
 
 while True:  # os.stat("ans").st_size == 0:#file = open('ans.txt', 'w')
     clr()
