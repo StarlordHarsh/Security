@@ -26,4 +26,4 @@ while len(st) < 9:
         st += chr(random.randrange(97, 123))
         print(ran, "", st)
 st+="ywod"
-print(color.BOLD + st[9:])
+print(color.UNDERLINE + st[9:])
