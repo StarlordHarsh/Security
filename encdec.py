@@ -19,6 +19,12 @@ import progressbar
 from getpass import getpass
 import sys
 import time
+import uuid
+import random
+
+print("The MAC address in formatted way is : ", end="")
+print(':'.join(['{:02x}'.format((uuid.getnode() >> ele) & 0xff)
+                for ele in range(0, 8 * 6, 8)][::-1]))
 
 
 def bashenc():
@@ -91,7 +97,7 @@ def rot22enc():
 
 
 def rot22dec():
-    s = input("Enter ur string here to Decrypt:")
+    s = input("Enter your string here to Decrypt:")
     s1 = ""
     print("Encrypted string is:", end="")
     print("\n")
@@ -180,8 +186,8 @@ def bar():
         time.sleep(0.1)
 
 
-#print("This Script Can Encrypt Ur Message In a Different Manner So That No Third Person Can Read It !")
-#print("\n\n\n")
+# print("This Script Can Encrypt Ur Message In a Different Manner So That No Third Person Can Read It !")
+# print("\n\n\n")
 
 
 def prnt():
@@ -197,17 +203,18 @@ def clr():
     if name == 'nt':
         _ = system('cls')
 
+
 def chkpass(pasw):
-    s1=""
+    s1 = ""
     for k in pasw:
         if 65 <= ord(k) <= 90 or 97 <= ord(k) <= 122:
             s1 += (chr(90 - (ord(k) - 65))) if k.isupper() else chr(122 - (ord(k) - 97))
         else:
             s1 += k
 
+
 def password():
     while True:
-        print("Pass block")
         pasw = input("Enter your new Password:")
         pasw1 = input("Enter your Password again:")
         if pasw == pasw1:
@@ -218,6 +225,7 @@ def password():
             filea.write(input("Answer:"))
             file = open('pass.txt', 'w')
             s1 = ""
+
             for k in pasw:
                 if 65 <= ord(k) <= 90 or 97 <= ord(k) <= 122:
                     s1 += (chr(90 - (ord(k) - 65))) if k.isupper() else chr(122 - (ord(k) - 97))
@@ -231,34 +239,48 @@ def password():
         else:
             print("Password did not matched, Enter again")
 
+
 if not path.exists("pass.txt"):
     password()  # if (path.exists("ans.txt")):
 else:
-    file = open("pass.txt", "r")
-    pasw = input("Enter your Password to Continue:")
-    s1 = ""
-    for k in pasw:
-        if 65 <= ord(k) <= 90 or 97 <= ord(k) <= 122:
-            s1 += (chr(90 - (ord(k) - 65))) if k.isupper() else chr(122 - (ord(k) - 97))
-        else:
-            s1 += k
-    if s1 == file.read():
-        print("Password Matched")
-    else:
-        print("Wrong Password")
-        print("Enter 1 to reset the password else 0 to Exit")
-        ch = int(input())
-        if ch == 1:
-            fileq = open('ques.txt', 'r')
-            filea = open('ans.txt', 'r')
-            fileans = input(fileq.read()+":")
-            if fileans == filea.read():
-                password()
+    tryc = 3
+    while tryc != 0:
+        file = open("pass.txt", "r")
+        pasw = input("Enter your Password to Continue:")
+        s1 = ""
+        for k in pasw:
+            if 65 <= ord(k) <= 90 or 97 <= ord(k) <= 122:
+                s1 += (chr(90 - (ord(k) - 65))) if k.isupper() else chr(122 - (ord(k) - 97))
             else:
-                print("Wrong answer")
-                sys.exit()
+                s1 += k
+        if s1 == file.read():
+            print("Password Matched")
         else:
-            sys.exit()
+            print("Wrong Password")
+            tryc -= 1
+    if tryc == 0:
+        fileq = open('ques.txt', 'r')
+        filea = open('ans.txt', 'r')
+        fileans = input(fileq.read() + ":")
+        if fileans == filea.read():
+            password()
+    # if s1 == file.read():
+    #    print("Password Matched")
+    # else:
+    #    print("Wrong Password")
+    #    print("Enter 1 to reset the password else 0 to Exit")
+    #    ch = int(input())
+    #    if ch == 1:
+    #        fileq = open('ques.txt', 'r')
+    #        filea = open('ans.txt', 'r')
+    #        fileans = input(fileq.read() + ":")
+    #        if fileans == filea.read():
+    #            password()
+    #        else:
+    #            print("Wrong answer")
+    #            sys.exit()
+    #    else:
+    #        sys.exit()
 
 while True:  # os.stat("ans").st_size == 0:#file = open('ans.txt', 'w')
     clr()
@@ -342,5 +364,5 @@ while True:  # os.stat("ans").st_size == 0:#file = open('ans.txt', 'w')
                 clr()
                 break
 
-    elif c==6:
+    elif c == 6:
         password()
