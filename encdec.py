@@ -248,9 +248,8 @@ def password():
         else:
             print("Password did not matched, Enter again")
 
-
 if not path.exists("pass.txt"):
-    password()  # if (path.exists("ans.txt")):
+    password()
 else:
     tryc = 3
     while tryc != 0:
@@ -264,6 +263,7 @@ else:
                 s1 += k
         if s1 == file.read()[9:]:
             print("Password Matched")
+            break
         else:
             print("Wrong Password")
             tryc -= 1
@@ -272,10 +272,13 @@ else:
         filea = open('ans.txt', 'r')
         fileans = input(fileq.read() + ":")
         if fileans == filea.read():
+            clr()
             password()
-    
+        else:
+            print("Wrong answer")
+            sys.exit(0)
 
-while True:  # os.stat("ans").st_size == 0:#file = open('ans.txt', 'w')
+while True:
     clr()
     print("""
               Menu-
