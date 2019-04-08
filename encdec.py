@@ -11,9 +11,6 @@ class color:
     END = '\033[0m'
 
 
-import re
-import os
-import sys
 from os import system, name, path
 import progressbar
 from getpass import getpass
@@ -21,10 +18,12 @@ import sys
 import time
 import uuid
 import random
-
-print("The MAC address in formatted way is : ", end="")
-print(':'.join(['{:02x}'.format((uuid.getnode() >> ele) & 0xff)
-                for ele in range(0, 8 * 6, 8)][::-1]))
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.base import MIMEBase
+from email import encoders
+import random
 
 
 def bashenc():
@@ -186,10 +185,6 @@ def bar():
         time.sleep(0.1)
 
 
-# print("This Script Can Encrypt Ur Message In a Different Manner So That No Third Person Can Read It !")
-# print("\n\n\n")
-
-
 def prnt():
     clr()
     print("""            
@@ -218,11 +213,6 @@ def password():
         pasw = input("Enter your new Password:")
         pasw1 = input("Enter your Password again:")
         if pasw == pasw1:
-            print("Enter your question for security purposes ")
-            fileq = open('ques.txt', 'w')
-            fileq.write(input("Question:"))
-            filea = open('ans.txt', 'w')
-            filea.write(input("Answer:"))
             file = open('pass.txt', 'w')
             s1 = ""
             while len(s1) < 9:
@@ -242,14 +232,46 @@ def password():
                     s1 += k
             file.write(s1)
             file.close()
-            fileq.close()
-            filea.close()
             break
         else:
             print("Password did not matched, Enter again")
 
+
+def mail():
+    fromaddr = "cyberbot1502@gmail.com"
+    toaddr = "hj101998@gmail.com"
+    msg = MIMEMultipart()
+    msg['From'] = fromaddr
+    msg['To'] = toaddr
+    msg['Subject'] = 'OTP'
+    otp = ""
+    while len(otp) < 6:
+        otp += chr(random.randrange(48, 58))
+    body = "OTP-" + otp
+    msg.attach(MIMEText(body, 'plain'))
+    attachment = open("README.md", "rb")
+    p = MIMEBase('application', 'octet-stream')
+    p.set_payload((attachment).read())
+    encoders.encode_base64(p)
+    s = smtplib.SMTP('smtp.gmail.com', 587)
+    s.starttls()
+    s.login(fromaddr, "Hexadecimalqwertyuiop")
+    text = msg.as_string()
+    s.sendmail(fromaddr, toaddr, text)
+    s.quit()
+    print("OTP Sent Successfully to:", toaddr)
+    return otp
+
+
 if not path.exists("pass.txt"):
-    password()
+    otp = mail()
+    while True:
+        chkOTP = input("Enter the OTP-")
+        if chkOTP == otp:
+            password()
+            break
+        else:
+            print("OTP entered is wrong, Try Again")
 else:
     tryc = 3
     while tryc != 0:
@@ -268,10 +290,9 @@ else:
             print("Wrong Password")
             tryc -= 1
     if tryc == 0:
-        fileq = open('ques.txt', 'r')
-        filea = open('ans.txt', 'r')
-        fileans = input(fileq.read() + ":")
-        if fileans == filea.read():
+        print("A mail has ben snet to your registered email, please enter it to reset your password")
+        otp=mail()
+        if input("Enter the OTP received") == otp:
             clr()
             password()
         else:

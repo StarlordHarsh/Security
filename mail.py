@@ -1,46 +1,29 @@
 import smtplib
-
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from email.mime.base import MIMEBase
+from email import encoders
+import random
 
-# me == my email address
-# you == recipient's email address
-me = "cyberbot1502@email.com"
-you = "hj101998@email.com"
-
-# Create message container - the correct MIME type is multipart/alternative.
-msg = MIMEMultipart('alternative')
-msg['Subject'] = "Link"
-msg['From'] = me
-msg['To'] = you
-
-# Create the body of the message (a plain-text and an HTML version).
-text = "Hi!\nHow are you?\nHere is the link you wanted:\nhttp://www.python.org"
-html = """\
-<html>
-  <head></head>
-  <body>
-    <p>Hi!<br>
-       How are you?<br>
-       Here is the <a href="http://www.python.org">link</a> you wanted.
-    </p>
-  </body>
-</html>
-"""
-
-# Record the MIME types of both parts - text/plain and text/html.
-part1 = MIMEText(text, 'plain')
-part2 = MIMEText(html, 'html')
-
-# Attach parts into message container.
-# According to RFC 2046, the last part of a multipart message, in this case
-# the HTML message, is best and preferred.
-msg.attach(part1)
-msg.attach(part2)
-
-# Send the message via local SMTP server.
-s = smtplib.SMTP('localhost')
-# sendmail function takes 3 arguments: sender's address, recipient's address
-# and message to send - here it is sent as one string.
-s.sendmail(me, you, msg.as_string())
+fromaddr = "cyberbot1502@gmail.com"
+toaddr = "hj101998@gmail.com"
+msg = MIMEMultipart()
+msg['From'] = fromaddr
+msg['To'] = toaddr
+msg['Subject'] = 'OTP'
+otp = ""
+while len(otp) < 6:
+    otp += chr(random.randrange(48, 58))
+body = "OTP-" + otp
+msg.attach(MIMEText(body, 'plain'))
+attachment = open("output2.xlsx", "rb")
+p = MIMEBase('application', 'octet-stream')
+p.set_payload((attachment).read())
+encoders.encode_base64(p)
+s = smtplib.SMTP('smtp.gmail.com', 587)
+s.starttls()
+s.login(fromaddr, "Hexadecimalqwertyuiop")
+text = msg.as_string()
+s.sendmail(fromaddr, toaddr, text)
 s.quit()
+print("Mail Sent Successfully to:", toaddr)
