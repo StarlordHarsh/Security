@@ -269,7 +269,7 @@ if not path.exists("pass.txt"):
     otp, secsend = mail()
     while True:
         chkOTP = input("Enter the OTP-")
-        secrec = time.time()
+        secsrec = time.time()
         if chkOTP == otp and int(time.time() - secsend) < 120:
             password()
             break
