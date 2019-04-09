@@ -24,6 +24,7 @@ from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
 import random
+import time
 
 
 def bashenc():
@@ -238,6 +239,7 @@ def password():
 
 
 def mail():
+    secsend = time.time()
     fromaddr = "cyberbot1502@gmail.com"
     toaddr = "hj101998@gmail.com"
     msg = MIMEMultipart()
@@ -247,7 +249,7 @@ def mail():
     otp = ""
     while len(otp) < 6:
         otp += chr(random.randrange(48, 58))
-    body = "OTP-" + otp
+    body = "OTP-" + otp + "\n This otp will expire in 2 mins"
     msg.attach(MIMEText(body, 'plain'))
     attachment = open("README.md", "rb")
     p = MIMEBase('application', 'octet-stream')
@@ -260,16 +262,19 @@ def mail():
     s.sendmail(fromaddr, toaddr, text)
     s.quit()
     print("OTP Sent Successfully to:", toaddr)
-    return otp
+    return otp, secsend
 
 
 if not path.exists("pass.txt"):
-    otp = mail()
+    otp, secsend = mail()
     while True:
         chkOTP = input("Enter the OTP-")
-        if chkOTP == otp:
+        secrec = time.time()
+        if chkOTP == otp and int(time.time() - secsend) < 120:
             password()
             break
+        elif int(time.time() - secsend) >= 120:
+            print("OTP expired !")
         else:
             print("OTP entered is wrong, Try Again")
 else:
@@ -291,7 +296,7 @@ else:
             tryc -= 1
     if tryc == 0:
         print("A mail has ben snet to your registered email, please enter it to reset your password")
-        otp=mail()
+        otp = mail()
         if input("Enter the OTP received") == otp:
             clr()
             password()
